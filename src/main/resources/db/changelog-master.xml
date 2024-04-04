@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xci="http://www.w3.org/2001/XMLSchema-instance"
+        xci:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <include file="migration/V20240404__init_table_user_profile.xml" relativeToChangelogFile="true"/>
+    <include file="migration/V20240404__init_table_token_users.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

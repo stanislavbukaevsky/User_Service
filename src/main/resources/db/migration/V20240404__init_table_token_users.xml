@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xci="http://www.w3.org/2001/XMLSchema-instance"
+        xci:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="V20240404__init_table_token_users" author="stanislav_bukaevsky">
+
+        <preConditions>
+            <not>
+                <tableExists tableName="token_users"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="token_users">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="refresh_token" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_time_creation" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_time_expires" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="token_users"
+                                 baseColumnNames="user_id"
+                                 constraintName="token_users__user_id__user_profile__id"
+                                 referencedTableName="user_profile"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>

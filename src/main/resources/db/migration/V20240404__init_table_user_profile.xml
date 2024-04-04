@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xci="http://www.w3.org/2001/XMLSchema-instance"
+        xci:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="V20240404__init_table_user_profile" author="stanislav_bukaevsky">
+
+        <preConditions>
+            <not>
+                <tableExists tableName="user_profile"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="user_profile">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(48)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
