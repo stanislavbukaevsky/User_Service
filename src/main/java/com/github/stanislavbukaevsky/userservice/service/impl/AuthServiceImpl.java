@@ -107,7 +107,7 @@ public class AuthServiceImpl implements AuthService {
         final LocalDateTime dateTimeExpiresAccess = LocalDateTime.ofInstant(
                 tokenDetailsService.getAccessExpiration().toInstant(), ZoneId.systemDefault());
         final LocalDateTime dateTimeExpiresRefresh = LocalDateTime.ofInstant(
-                        tokenDetailsService.getRefreshExpiration().toInstant(), ZoneId.systemDefault())
+                tokenDetailsService.getRefreshExpiration().toInstant(), ZoneId.systemDefault())
                 .truncatedTo(ChronoUnit.MINUTES);
         Token token = tokenRepository.findTokenByUserId(id).orElseGet(() ->
                 tokenService.addToken(refreshToken, userSecurity.getUser(), new Token()));
